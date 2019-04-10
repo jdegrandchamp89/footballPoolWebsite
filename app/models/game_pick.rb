@@ -1,0 +1,2 @@
+class GamePick < ApplicationRecord
+end

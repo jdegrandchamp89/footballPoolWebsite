@@ -38,7 +38,7 @@
 
   <div class="field">
     <%= form.label :gender %>
-    <%= form.number_field :gender %>
+    <%= form.select :gender, options_for_select(@genders.keys, selected:(@user.try(:gender) || :male)), {}, {class: "form-control"} %>
   </div>
 
   <div class="field">

@@ -1,0 +1,42 @@
+<%= form_with(model: game_pick, local: true) do |form| %>
+  <% if game_pick.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(game_pick.errors.count, "error") %> prohibited this game_pick from being saved:</h2>
+
+      <ul>
+      <% game_pick.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :team1 %>
+    <%= form.text_field :team1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :team2 %>
+    <%= form.text_field :team2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :week %>
+    <%= form.number_field :week %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pickedteam %>
+    <%= form.text_field :pickedteam %>
+  </div>
+
+  <div class="field">
+    <%= form.label :spread %>
+    <%= form.number_field :spread %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

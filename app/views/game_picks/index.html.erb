@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Game Picks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Team1</th>
+      <th>Team2</th>
+      <th>Week</th>
+      <th>Pickedteam</th>
+      <th>Spread</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @game_picks.each do |game_pick| %>
+      <tr>
+        <td><%= game_pick.team1 %></td>
+        <td><%= game_pick.team2 %></td>
+        <td><%= game_pick.week %></td>
+        <td><%= game_pick.pickedteam %></td>
+        <td><%= game_pick.spread %></td>
+        <td><%= link_to 'Show', game_pick %></td>
+        <td><%= link_to 'Edit', edit_game_pick_path(game_pick) %></td>
+        <td><%= link_to 'Destroy', game_pick, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Game Pick', new_game_pick_path %>

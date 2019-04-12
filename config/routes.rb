@@ -10,5 +10,4 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'picks', to: 'game_picks#index', as: 'picks'
   get 'about', to: 'about#about', as: 'about'
-  get 'leagues', to: 'leagues#index', as: 'leagues'
 end

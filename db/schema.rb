@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_135747) do
+ActiveRecord::Schema.define(version: 2019_04_12_151136) do
 
   create_table "game_picks", force: :cascade do |t|
     t.string "team1"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 2019_04_10_135747) do
     t.index ["team1"], name: "index_game_picks_on_team1", unique: true
     t.index ["team2"], name: "index_game_picks_on_team2", unique: true
     t.index ["week"], name: "index_game_picks_on_week", unique: true
+  end
+
+  create_table "leagues", force: :cascade do |t|
+    t.string "name"
+    t.integer "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

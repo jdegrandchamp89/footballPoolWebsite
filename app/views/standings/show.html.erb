@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @standing.place %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @standing.score %>
+</p>
+
+<%= link_to 'Edit', edit_standing_path(@standing) %> |
+<%= link_to 'Back', standings_path %>

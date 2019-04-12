@@ -4,6 +4,10 @@ class GamePicksController < ApplicationController
   # GET /game_picks
   # GET /game_picks.json
   def index
+    if current_user
+    else
+      redirect_to "/login"
+    end
     @game_picks = GamePick.all
   end
 

@@ -1,52 +1,57 @@
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2>
+        <%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% user.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+          <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+      <div class="form-group">
+        <div class="field">
+          <%= form.label :email %>
+            <%= form.text_field :email, :class => 'form-control' %>
+        </div>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
+        <div class="field">
+          <%= form.label :password %>
+            <%= form.password_field :password, :class => 'form-control' %>
+        </div>
 
-  <div class="field">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
-  </div>
+        <div class="field">
+          <%= form.label :password_confirmation %>
+            <%= form.password_field :password_confirmation, :class => 'form-control' %>
+        </div>
 
-  <div class="field">
-    <%= form.label :fname %>
-    <%= form.text_field :fname %>
-  </div>
+        <div class="field">
+          <%= form.label 'First Name' %>
+            <%= form.text_field :fname, :class => 'form-control' %>
+        </div>
 
-  <div class="field">
-    <%= form.label :lname %>
-    <%= form.text_field :lname %>
-  </div>
+        <div class="field">
+          <%= form.label 'Last Name' %>
+            <%= form.text_field :lname, :class => 'form-control' %>
+        </div>
 
-  <div class="field">
-    <%= form.label :gender %>
-    <%= form.select :gender, options_for_select(@genders.keys, selected:(@user.try(:gender) || :male)), {}, {class: "form-control"} %>
-  </div>
+        <div class="field">
+          <%= form.label :gender %>
+            <%= form.select :gender, options_for_select(@genders.keys, selected:(@user.try(:gender) || :male)), {}, {class: "form-control"} %>
+        </div>
 
-  <div class="field">
-    <%= form.label :dob %>
-    <%= form.date_select :dob %>
-  </div>
+        <div class="field">
+          <%= form.label 'Date of Birth' %>
+            <%= form.date_field :dob, :class => 'form-control' %>
+        </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+        <div class="actions">
+          <%= form.submit :class => 'btn' %>
+        </div>
+      </div>
+      <% end %>

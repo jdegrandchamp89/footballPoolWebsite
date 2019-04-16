@@ -1,3 +1,25 @@
 <%= render 'layouts/navigation' %>
-<h1>About#about</h1>
-<p>Find me in app/views/about/about.html.erb</p>
+
+<main role="main" class="container">
+  <div class="jumbotron">
+    <h1>How the football pool works</h1>
+    <p class="lead">Create a league, join a league, make your picks!</p>
+    <p class="lead">
+      Want to have a football pool with your friends? Register for the site, create a new league, and invite all your friends.
+    </p>
+    <p class="lead">
+      Been invited to a league? Once you are registered for the site, the league admin will be able to invite you to their existing league.
+    </p>
+    <p class="lead">
+      Make you picks every week. As games are completed your score on the standings will be updated. Heres how the rules work:
+    </p>
+    <ul class="lead">
+        <li>If your pick is correct, you get 10 points</li>
+        <li>If your spread is correct, you get 0 points subtracted from your score</li>
+        <li>Otherwise, 1 point will be subtracted for each point your spread is off</li>
+        <li>If you made an incorrect pick, your spread will be treated as negative number</li>
+        <li>Example spread points for correct pick (Actual spread = 10, your spread = 5, points deducted = 5)</li>
+        <li>Example spread points for incorrect pick (Actual spread = 10, your spread = 5, <br>points deducted = 15)</li>
+    </ul>
+  </div>
+</main>

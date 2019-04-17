@@ -1,6 +1,29 @@
 <%= render 'layouts/navigationSignedIn' %>
 <p id="notice"><%= notice %></p>
 
+<div id="weeksNav">
+  <p>
+    Weeks: 
+    <a>1</a>|
+    <a>2</a>|
+    <a>3</a>|
+    <a>4</a>|
+    <a>5</a>|
+    <a>6</a>|
+    <a>7</a>|
+    <a>8</a>|
+    <a>9</a>|
+    <a>10</a>|
+    <a>11</a>|
+    <a>12</a>|
+    <a>13</a>|
+    <a>14</a>|
+    <a>15</a>|
+    <a>16</a>|
+    <a>17</a>
+  </p>
+</div>
+
 <div id="margin">
 <table class="table table-bordered">
   <thead class="thead-light">
@@ -22,8 +45,8 @@
         <td><%= game_pick.team2 %></td>
         <td><%= game_pick.gamedatetime %></td>
         <td><%= game_pick.week %></td>
-        <td><%= game_pick.pickedteam %></td>
-        <td><%= game_pick.spread %></td>
+        <td><%= form_with(model: game_pick, local: true) do |form| %><%= form.select game_pick.pickedteam, options_for_select([game_pick.team1, game_pick.team2], selected: game_pick.team1), {}, {class: "form-control"} %><% end %></td>
+        <td><%= form_with(model: game_pick, local: true) do |form| %><%= form.number_field game_pick.spread, value: game_pick.spread, :class => 'form-control' %><% end %></td>
         <td><%= link_to 'Show', game_pick %></td>
         <td><%= link_to 'Edit', edit_game_pick_path(game_pick) %></td>
         <td><%= link_to 'Destroy', game_pick, method: :delete, data: { confirm: 'Are you sure?' } %></td>

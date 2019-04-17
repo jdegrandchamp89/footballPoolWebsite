@@ -1,17 +1,17 @@
 <%= render 'layouts/navigationSignedIn' %>
 <p id="notice"><%= notice %></p>
 
-<h1>Game Picks</h1>
-
-<table>
-  <thead>
+<div id="margin">
+<table class="table table-bordered">
+  <thead class="thead-light">
     <tr>
-      <th>Team1</th>
-      <th>Team2</th>
-      <th>Week</th>
-      <th>Pickedteam</th>
-      <th>Spread</th>
-      <th colspan="3"></th>
+      <th scope="col">Team1</th>
+      <th scope="col">Team2</th>
+      <th scope="col">GameDateTime</th>
+      <th scope="col">Week</th>
+      <th scope="col">Pickedteam</th>
+      <th scope="col">Spread</th>
+      <th scope="col" colspan="3"></th>
     </tr>
   </thead>
 
@@ -20,6 +20,7 @@
       <tr>
         <td><%= game_pick.team1 %></td>
         <td><%= game_pick.team2 %></td>
+        <td><%= game_pick.gamedatetime %></td>
         <td><%= game_pick.week %></td>
         <td><%= game_pick.pickedteam %></td>
         <td><%= game_pick.spread %></td>
@@ -30,6 +31,7 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
 <br>
 

@@ -29,6 +29,8 @@ class GamePicksController < ApplicationController
   # POST /game_picks.json
   def create
     @game_pick = GamePick.new(game_pick_params)
+    user = User.find(game_pick_params[:user_id])
+    @game_pick.build_user(:id => user.id)
 
     respond_to do |format|
       if @game_pick.save
@@ -73,6 +75,6 @@ class GamePicksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_pick_params
-      params.require(:game_pick).permit(:team1, :team2, :week, :pickedteam, :spread)
+      params.require(:game_pick).permit(:team1, :team2, :week, :pickedteam, :spread, :gamedatetime, :user_id)
     end
 end

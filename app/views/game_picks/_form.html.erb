@@ -36,6 +36,16 @@
     <%= form.number_field :spread %>
   </div>
 
+  <div class="field">
+    <%= form.label :gamedatetime %>
+    <%= form.datetime_local_field :gamedatetime %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

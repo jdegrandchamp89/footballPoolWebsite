@@ -1,4 +1,4 @@
-class gameInfo
+class GameInfo
   def initialize(page)
     @page = page
   end

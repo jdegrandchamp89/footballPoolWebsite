@@ -9,8 +9,7 @@ class GamePicksController < ApplicationController
       redirect_to "/login"
     end
     game_info_object = GameInfo.new("1")
-    puts game_info_object
-    @game_info = game_info_object.get_game_info()    
+    @game_infos = game_info_object.get_game_info()    
     
     @game_picks = GamePick.all
   end

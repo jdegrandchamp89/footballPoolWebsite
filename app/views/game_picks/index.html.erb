@@ -34,23 +34,20 @@
       <th scope="col">Week</th>
       <th scope="col">Pickedteam</th>
       <th scope="col">Spread</th>
-      <th scope="col" colspan="3"></th>
+<!--       <th scope="col" colspan="3"></th> -->
     </tr>
   </thead>
 
-  <% puts @game_info %>
   <tbody>
-    <% @game_picks.each do |game_pick| %>
+    <% @game_infos.each do |game_info| %>
+      <% game_info["schedule"]["pickedTeam"] = "" %>
+      <% game_info["schedule"]["spread"] = 0 %>
       <tr>
-        <td><%= game_pick.team1 %></td>
-        <td><%= game_pick.team2 %></td>
-        <td><%= game_pick.gamedatetime %></td>
-        <td><%= game_pick.week %></td>
-        <td><%= form_with(model: game_pick, local: true) do |form| %><%= form.select game_pick.pickedteam, options_for_select([game_pick.team1, game_pick.team2], selected: game_pick.team1), {}, {class: "form-control"} %><% end %></td>
-        <td><%= form_with(model: game_pick, local: true) do |form| %><%= form.number_field game_pick.spread, value: game_pick.spread, :class => 'form-control' %><% end %></td>
-        <td><%= link_to 'Show', game_pick %></td>
-        <td><%= link_to 'Edit', edit_game_pick_path(game_pick) %></td>
-        <td><%= link_to 'Destroy', game_pick, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= game_info["schedule"]["homeTeam"]["abbreviation"] %></td>
+        <td><%= game_info["schedule"]["awayTeam"]["abbreviation"] %></td>
+        <td><%= game_info["schedule"]["startTime"] %></td>
+        <td><%= game_info["schedule"]["week"] %></td>
+        <% puts game_info %>
       </tr>
     <% end %>
   </tbody>

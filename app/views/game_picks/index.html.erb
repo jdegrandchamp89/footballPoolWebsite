@@ -47,7 +47,8 @@
         <td><%= game_info["schedule"]["awayTeam"]["abbreviation"] %></td>
         <td><%= game_info["schedule"]["startTime"] %></td>
         <td><%= game_info["schedule"]["week"] %></td>
-        <% puts game_info %>
+        <td><%= form_with do |form| %><%= form.select game_info["schedule"]["pickedTeam"], options_for_select([game_info["schedule"]["homeTeam"]["abbreviation"], game_info["schedule"]["awayTeam"]["abbreviation"]], selected: game_info["schedule"]["pickedTeam"]), {}, {class: "form-control"} %><% end %></td>
+        <td><%= form_with do |form| %><%= form.number_field game_info["schedule"]["spread"], value: game_info["schedule"]["spread"], :class => 'form-control' %><% end %></td>
       </tr>
     <% end %>
   </tbody>

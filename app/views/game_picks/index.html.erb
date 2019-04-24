@@ -4,23 +4,23 @@
 <div id="weeksNav">
   <p>
     Weeks: 
-    <a>1</a>|
-    <a>2</a>|
-    <a>3</a>|
-    <a>4</a>|
-    <a>5</a>|
-    <a>6</a>|
-    <a>7</a>|
-    <a>8</a>|
-    <a>9</a>|
-    <a>10</a>|
-    <a>11</a>|
-    <a>12</a>|
-    <a>13</a>|
-    <a>14</a>|
-    <a>15</a>|
-    <a>16</a>|
-    <a>17</a>
+    <%= link_to "1", {:controller => "game_picks", :method => "index", :week => "1" }%>|
+    <%= link_to "2", {:controller => "game_picks", :method => "index", :week => "2" }%>|
+    <%= link_to "3", {:controller => "game_picks", :method => "index", :week => "3" }%>|
+    <%= link_to "4", {:controller => "game_picks", :method => "index", :week => "4" }%>|
+    <%= link_to "5", {:controller => "game_picks", :method => "index", :week => "5" }%>|
+    <%= link_to "6", {:controller => "game_picks", :method => "index", :week => "6" }%>|
+    <%= link_to "7", {:controller => "game_picks", :method => "index", :week => "7" }%>|
+    <%= link_to "8", {:controller => "game_picks", :method => "index", :week => "8" }%>|
+    <%= link_to "9", {:controller => "game_picks", :method => "index", :week => "9" }%>|
+    <%= link_to "10", {:controller => "game_picks", :method => "index", :week => "10" }%>|
+    <%= link_to "11", {:controller => "game_picks", :method => "index", :week => "11" }%>|
+    <%= link_to "12", {:controller => "game_picks", :method => "index", :week => "12" }%>|
+    <%= link_to "13", {:controller => "game_picks", :method => "index", :week => "13" }%>|
+    <%= link_to "14", {:controller => "game_picks", :method => "index", :week => "14" }%>|
+    <%= link_to "15", {:controller => "game_picks", :method => "index", :week => "15" }%>|
+    <%= link_to "16", {:controller => "game_picks", :method => "index", :week => "16" }%>|
+    <%= link_to "17", {:controller => "game_picks", :method => "index", :week => "17" }%>
   </p>
 </div>
 
@@ -45,7 +45,7 @@
       <tr>
         <td><%= game_info["schedule"]["homeTeam"]["abbreviation"] %></td>
         <td><%= game_info["schedule"]["awayTeam"]["abbreviation"] %></td>
-        <td><%= game_info["schedule"]["startTime"] %></td>
+        <td><%= DateTime.parse(game_info["schedule"]["startTime"]).new_offset("-04:00").strftime("%m/%d/%y %l:%M %p") %></td>
         <td><%= game_info["schedule"]["week"] %></td>
         <td><%= form_with do |form| %><%= form.select game_info["schedule"]["pickedTeam"], options_for_select([game_info["schedule"]["homeTeam"]["abbreviation"], game_info["schedule"]["awayTeam"]["abbreviation"]], selected: game_info["schedule"]["pickedTeam"]), {}, {class: "form-control"} %><% end %></td>
         <td><%= form_with do |form| %><%= form.number_field game_info["schedule"]["spread"], value: game_info["schedule"]["spread"], :class => 'form-control' %><% end %></td>
@@ -54,3 +54,7 @@
   </tbody>
 </table>
 </div>
+
+<br>
+
+<%= button_to "Save", nil, :class => 'btn btn-lg btn-primary' %>

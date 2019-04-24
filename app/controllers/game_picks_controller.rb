@@ -8,7 +8,11 @@ class GamePicksController < ApplicationController
     else
       redirect_to "/login"
     end
-    game_info_object = GameInfo.new("1")
+    week = params[:week]
+    if week == nil
+      week = "1"
+    end
+    game_info_object = GameInfo.new(week)
     @game_infos = game_info_object.get_game_info()    
     
     @game_picks = GamePick.all

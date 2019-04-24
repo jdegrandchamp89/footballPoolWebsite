@@ -13,9 +13,19 @@ class GamePicksController < ApplicationController
       week = "1"
     end
     game_info_object = GameInfo.new(week)
-    @game_infos = game_info_object.get_game_info()    
-    
+    @game_infos = game_info_object.get_game_info()      
     @game_picks = GamePick.all
+    
+#     @game_infos.map! do |game_info|
+#       game_info["schedule"]["spread"] = "7"
+#     end
+#     puts @game_infos.inspect
+    
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render :index, status: :ok}
+      format.xml {render xml: @game_picks.as_json}
+    end 
   end
 
   # GET /game_picks/1
@@ -35,11 +45,15 @@ class GamePicksController < ApplicationController
   # POST /game_picks
   # POST /game_picks.json
   def create
-    @game_pick = GamePick.new(game_pick_params)
-    user = User.find(game_pick_params[:user_id])
-    @game_pick.build_user(:id => user.id)
+    @game_pick = GamePick.find_or_initialize_by(team1: game_pick_params[:team1], team2: game_pick_params[:team2], week: game_pick_params[:week])
+    @game_pick[:pickedteam] = game_pick_params[:pickedteam]
+    @game_pick[:spread] = game_pick_params[:spread]
+    @game_pick[:gamedatetime] = game_pick_params[:gamedatetime]
+    
+    @game_pick.build_user(:id => session[:user_id])
 
     respond_to do |format|
+      puts @game_pick.inspect
       if @game_pick.save
         format.html { redirect_to @game_pick, notice: 'Game pick was successfully created.' }
         format.json { render :show, status: :created, location: @game_pick }

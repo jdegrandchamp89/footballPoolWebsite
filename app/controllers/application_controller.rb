@@ -7,4 +7,5 @@ class ApplicationController < ActionController::Base
       @current_user = nil
     end
   end
+  protect_from_forgery unless: -> { request.format.json? }
 end

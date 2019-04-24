@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_132414) do
+ActiveRecord::Schema.define(version: 2019_04_24_194119) do
 
   create_table "game_picks", force: :cascade do |t|
     t.string "team1"
@@ -22,10 +22,8 @@ ActiveRecord::Schema.define(version: 2019_04_13_132414) do
     t.datetime "updated_at", null: false
     t.datetime "gamedatetime"
     t.integer "user_id"
-    t.index ["team1"], name: "index_game_picks_on_team1", unique: true
-    t.index ["team2"], name: "index_game_picks_on_team2", unique: true
+    t.index ["team1", "team2", "week"], name: "index_game_picks_on_team1_and_team2_and_week", unique: true
     t.index ["user_id"], name: "index_game_picks_on_user_id"
-    t.index ["week"], name: "index_game_picks_on_week", unique: true
   end
 
   create_table "league_memberships", force: :cascade do |t|

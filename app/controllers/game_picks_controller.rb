@@ -17,7 +17,7 @@ class GamePicksController < ApplicationController
     @game_picks = GamePick.all
     
     @game_infos.each do |game_info|
-      correct_game = @game_picks.select{ |game_pick| game_pick.team1 == game_info["schedule"]["homeTeam"]["abbreviation"] && game_pick.team2 == game_info["schedule"]["awayTeam"]["abbreviation"] && game_pick.week == game_info["schedule"]["week"]}
+      correct_game = @game_picks.select{ |game_pick| game_pick.team1 == game_info["schedule"]["homeTeam"]["abbreviation"] && game_pick.team2 == game_info["schedule"]["awayTeam"]["abbreviation"] && game_pick.week == game_info["schedule"]["week"] && game_pick.user_id == session[:user_id]}
       if correct_game[0] != nil
         game = correct_game[0]
         game_info["schedule"]["pickedTeam"] = game.pickedteam

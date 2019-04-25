@@ -2,14 +2,14 @@
 
 one:
   team1: MyString
-  team2: MyString
+  team2: MyString2
   week: 1
   pickedteam: MyString
   spread: 1
 
 two:
-  team1: MyString
-  team2: MyString
+  team1: MyString3
+  team2: MyString4
   week: 1
   pickedteam: MyString
   spread: 1

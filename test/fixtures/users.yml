@@ -9,7 +9,7 @@ one:
   dob: 2019-04-08
 
 two:
-  email: MyString
+  email: MyString2
   password_digest: <%= BCrypt::Password.create('secret') %>
   fname: MyString
   lname: MyString

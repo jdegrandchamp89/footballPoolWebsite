@@ -17,4 +17,5 @@
 //= require activestorage
 //= require turbolinks
 //= require picks
+//= require block
 //= require_tree .

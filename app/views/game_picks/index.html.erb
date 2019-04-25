@@ -28,8 +28,8 @@
 <table class="table table-bordered">
   <thead class="thead-light">
     <tr>
-      <th scope="col">Team1</th>
-      <th scope="col">Team2</th>
+      <th scope="col">HomeTeam</th>
+      <th scope="col">AwayTeam</th>
       <th scope="col">GameDateTime</th>
       <th scope="col">Week</th>
       <th scope="col">Pickedteam</th>
@@ -40,8 +40,6 @@
 
   <tbody>
     <% @game_infos.each do |game_info| %>
-      <% game_info["schedule"]["pickedTeam"] = "" %>
-      <% game_info["schedule"]["spread"] = 0 %>
       <tr>
         <td><%= game_info["schedule"]["homeTeam"]["abbreviation"] %></td>
         <td><%= game_info["schedule"]["awayTeam"]["abbreviation"] %></td>

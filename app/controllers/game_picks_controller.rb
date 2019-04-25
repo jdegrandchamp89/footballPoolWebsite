@@ -16,10 +16,18 @@ class GamePicksController < ApplicationController
     @game_infos = game_info_object.get_game_info()      
     @game_picks = GamePick.all
     
-#     @game_infos.map! do |game_info|
-#       game_info["schedule"]["spread"] = "7"
-#     end
-#     puts @game_infos.inspect
+    @game_infos.each do |game_info|
+      correct_game = @game_picks.select{ |game_pick| game_pick.team1 == game_info["schedule"]["homeTeam"]["abbreviation"] && game_pick.team2 == game_info["schedule"]["awayTeam"]["abbreviation"] && game_pick.week == game_info["schedule"]["week"]}
+      if correct_game[0] != nil
+        game = correct_game[0]
+        game_info["schedule"]["pickedTeam"] = game.pickedteam
+        game_info["schedule"]["spread"] = game.spread
+      else
+        game_info["schedule"]["pickedTeam"] = ""
+        game_info["schedule"]["spread"] = 0
+      end
+      
+    end
     
     respond_to do |format|
       format.html {render :index}

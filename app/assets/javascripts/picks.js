@@ -1,5 +1,6 @@
-$(document).ready(function() {
-  //alert(location.hostname);
+var ready;
+ready = function() {
+  
   var data = {};
   // jQuery methods go here...
   $("#saveButton").click(function(e) {
@@ -57,4 +58,7 @@ $(document).ready(function() {
     $.unblockUI();
   });
 
-});
+};
+
+$(document).ready(ready);
+$(document).on('turbolinks:load', ready);
